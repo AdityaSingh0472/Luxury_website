@@ -40,10 +40,26 @@ function updateHash(hash) {
   }
 }
 
-function scrollElementToCenter(target) {
+function getFixedNavBottom() {
+  if (!nav) return 0;
+  const rect = nav.getBoundingClientRect();
+  return Math.max(0, rect.bottom);
+}
+
+function getCenteredScrollTop(target) {
   const rect = target.getBoundingClientRect();
-  const scrollTop = window.scrollY + rect.top - ((window.innerHeight - rect.height) / 2);
-  window.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+  const navBottom = getFixedNavBottom();
+  const visibleHeight = Math.max(1, window.innerHeight - navBottom);
+  const targetHeight = Math.min(rect.height, visibleHeight);
+  const targetCenter = window.scrollY + rect.top + (targetHeight / 2);
+  const viewportCenter = navBottom + (visibleHeight / 2);
+  const tallTargetInset = rect.height > visibleHeight ? Math.min(140, visibleHeight * 0.18) : 0;
+
+  return Math.max(0, targetCenter - viewportCenter - tallTargetInset);
+}
+
+function scrollElementToCenter(target) {
+  window.scrollTo({ top: getCenteredScrollTop(target), behavior: 'smooth' });
 }
 
 function scrollCollectionCardToCenter(target) {
@@ -56,6 +72,11 @@ function scrollCollectionCardToCenter(target) {
   }
 
   const maxScroll = getHorizontalScrollDistance();
+  if (maxScroll <= 0) {
+    scrollElementToCenter(target);
+    return;
+  }
+
   const targetCenter = target.offsetLeft + (target.offsetWidth / 2);
   const viewportCenter = window.innerWidth / 2;
   const horizontalOffset = Math.min(Math.max(0, targetCenter - viewportCenter), maxScroll);
