@@ -19,12 +19,68 @@ document.querySelectorAll('a,button,.col-card,.t-dot,.nav-shop').forEach(el=>{
 const nav = document.getElementById('nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
+const navShop = document.querySelector('.nav-shop');
+const collectionsSection = document.querySelector('#collections');
+const horizontalScrollTrack = document.getElementById('horizontalScrollTrack');
+let horizontalScrollMM;
+let horizontalScrollTrigger;
 
 function closeMobileMenu() {
   if (!nav || !navToggle) return;
   nav.classList.remove('menu-open');
   navToggle.setAttribute('aria-expanded', 'false');
   navToggle.setAttribute('aria-label', 'Open menu');
+}
+
+function updateHash(hash) {
+  if (history.pushState) {
+    history.pushState(null, '', hash);
+  } else {
+    window.location.hash = hash;
+  }
+}
+
+function scrollElementToCenter(target) {
+  const rect = target.getBoundingClientRect();
+  const scrollTop = window.scrollY + rect.top - ((window.innerHeight - rect.height) / 2);
+  window.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+}
+
+function scrollCollectionCardToCenter(target) {
+  const isDesktop = window.matchMedia('(min-width: 1100px)').matches;
+  const isCollectionCard = horizontalScrollTrack && horizontalScrollTrack.contains(target);
+
+  if (!isDesktop || !isCollectionCard || !horizontalScrollTrigger) {
+    scrollElementToCenter(target);
+    return;
+  }
+
+  const maxScroll = getHorizontalScrollDistance();
+  const targetCenter = target.offsetLeft + (target.offsetWidth / 2);
+  const viewportCenter = window.innerWidth / 2;
+  const horizontalOffset = Math.min(Math.max(0, targetCenter - viewportCenter), maxScroll);
+
+  window.scrollTo({
+    top: Math.max(0, horizontalScrollTrigger.start + horizontalOffset),
+    behavior: 'smooth'
+  });
+}
+
+function scrollToHash(hash) {
+  if (!hash || hash === '#') return false;
+
+  const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+  if (!target) return false;
+
+  if (horizontalScrollTrack && horizontalScrollTrack.contains(target)) {
+    scrollCollectionCardToCenter(target);
+  } else {
+    scrollElementToCenter(target);
+  }
+
+  updateHash(hash);
+  closeMobileMenu();
+  return true;
 }
 
 if (nav && navToggle && navLinks) {
@@ -35,7 +91,9 @@ if (nav && navToggle && navLinks) {
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
+    link.addEventListener('click', event => {
+      if (scrollToHash(link.hash)) event.preventDefault();
+    });
   });
 
   document.addEventListener('click', event => {
@@ -48,16 +106,29 @@ if (nav && navToggle && navLinks) {
   });
 }
 
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if (navLinks && navLinks.contains(link)) return;
+
+  link.addEventListener('click', event => {
+    if (scrollToHash(link.hash)) event.preventDefault();
+  });
+});
+
+if (navShop) {
+  navShop.removeAttribute('onclick');
+  navShop.onclick = null;
+  navShop.addEventListener('click', event => {
+    event.preventDefault();
+    scrollToHash('#collections');
+  });
+}
+
 
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 },{ threshold:.1 });
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-
-const collectionsSection = document.querySelector('#collections');
-const horizontalScrollTrack = document.getElementById('horizontalScrollTrack');
-let horizontalScrollMM;
 
 function getHorizontalScrollDistance() {
   if (!horizontalScrollTrack) return 0;
@@ -88,6 +159,7 @@ function initHorizontalScrollTrigger() {
       x: () => -getHorizontalScrollDistance(),
       ease: 'none',
       scrollTrigger: {
+        id: 'collections-horizontal',
         trigger: collectionsSection,
         start: 'top top',
         end: () => `+=${getHorizontalScrollDistance()}`,
@@ -97,8 +169,10 @@ function initHorizontalScrollTrigger() {
         invalidateOnRefresh: true,
       }
     });
+    horizontalScrollTrigger = horizontalTween.scrollTrigger;
 
     return () => {
+      horizontalScrollTrigger = null;
       horizontalTween.scrollTrigger.kill();
       horizontalTween.kill();
       clearHorizontalScroll();
@@ -106,11 +180,17 @@ function initHorizontalScrollTrigger() {
   });
 
   horizontalScrollMM.add('(max-width: 1099px)', () => {
+    horizontalScrollTrigger = null;
     clearHorizontalScroll();
   });
 }
 
-window.addEventListener('load', () => initHorizontalScrollTrigger());
+window.addEventListener('load', () => {
+  initHorizontalScrollTrigger();
+  if (window.location.hash) {
+    setTimeout(() => scrollToHash(window.location.hash), 80);
+  }
+});
 
 
 window.addEventListener('scroll',()=>{
