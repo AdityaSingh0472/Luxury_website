@@ -1903,3 +1903,43 @@ section.testimonial-card {
         transform: none !important;
     }
 }
+
+@media (min-width: 1101px) {
+    .collections .col-card:hover .col-overlay {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 54px 42px 54px 48%;
+        text-align: right;
+        background:
+            linear-gradient(to right, rgba(5,5,5,.08) 0%, rgba(5,5,5,.18) 42%, rgba(5,5,5,.78) 72%, rgba(5,5,5,.92) 100%),
+            linear-gradient(to top, rgba(5,5,5,.82) 0%, rgba(5,5,5,.14) 62%, rgba(5,5,5,.38) 100%);
+    }
+
+    .collections .col-card:hover .col-tag,
+    .collections .col-card:hover .col-name {
+        writing-mode: horizontal-tb;
+        transform: none;
+        text-align: right;
+        white-space: normal;
+    }
+
+    .collections .col-card:hover .col-tag {
+        margin: 0 0 12px;
+    }
+
+    .collections .col-card:hover .col-name {
+        max-width: 260px;
+        line-height: 1.05;
+    }
+
+    .collections .col-card:hover .col-desc {
+        position: static;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        max-width: 240px;
+        margin: 18px 0 0 auto;
+        text-align: right;
+        line-height: 1.55;
+    }
+}
