@@ -59,15 +59,25 @@ nav {
 }
 nav.scrolled { background:rgba(5,5,5,.12); padding:18px 60px; box-shadow:0 20px 60px rgba(0,0,0,.15); }
 .nav-logo {
-  display:block;
-  width:180px;
-  line-height:0;
+  display:inline-flex;
+  align-items:center;
+  min-width:176px;
+  line-height:1;
 }
-.nav-logo img {
-  width:100%;
-  height:auto;
-  display:block;
-  filter:drop-shadow(0 0 12px rgba(255,255,255,.12));
+.brand-wordmark {
+  display:inline-block;
+  font-family:'Cormorant Garamond','Times New Roman',Times,serif;
+  font-size:56px;
+  font-weight:600;
+  line-height:.82;
+  letter-spacing:.065em;
+  color: #7e5d0f;
+  text-transform:uppercase;
+  transform:scaleX(1.02);
+  transform-origin:left center;
+  text-shadow:
+    0 0 1px rgba(255,255,255,.16),
+    0 1px 4px rgba(0,0,0,.36);
 }
 .nav-links { display:flex; gap:38px; }
 .nav-mobile-shop { display:none; }
@@ -780,14 +790,9 @@ footer {
   display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; margin-bottom:54px;
 }
 .footer-logo {
-  width:190px;
+  width:max-content;
   margin-bottom:14px;
-  line-height:0;
-}
-.footer-logo img {
-  width:100%;
-  height:auto;
-  display:block;
+  line-height:1;
 }
 .footer-tag { font-size:10px; letter-spacing:.08em; color:var(--dim); line-height:1.9; }
 .footer-col-title { font-size:8px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
@@ -931,7 +936,8 @@ footer {
     backdrop-filter:none;
   }
   nav.scrolled { background:rgba(5,5,5,.18); padding:14px 24px; backdrop-filter:blur(7px); }
-  .nav-logo { width:170px; }
+  .nav-logo { min-width:154px; }
+  .nav-logo .brand-wordmark { font-size:48px; }
   .nav-toggle { display:flex; margin-left:auto; }
   .nav-shop { display:none; }
   .nav-links {
@@ -1719,7 +1725,11 @@ section.testimonial-card {
     }
 
     .nav-logo {
-        width: min(168px, 46vw);
+        min-width: min(144px, 46vw);
+    }
+
+    .nav-logo .brand-wordmark {
+        font-size:42px;
     }
 
     .nav-shop {
