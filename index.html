@@ -24,13 +24,19 @@
   <a href="#" class="nav-logo" aria-label="Kika Jewels home">
     <img src="logo.webp" alt="Kika Jewels">
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="primary-navigation">
     <li><a href="#collections">Collections</a></li>
     <li><a href="#rings">Rings</a></li>
     <li><a href="#necklaces">Necklaces</a></li>
     <li><a href="#earrings">Earrings</a></li>
     <li><a href="#bracelets">Bracelets</a></li>
     <li><a href="#about">About</a></li>
+    <li class="nav-mobile-shop"><a href="#collections">Shop Now</a></li>
   </ul>
   <div class="nav-shop" onclick="location.href='#collections'">✦ Shop Now</div>
 </nav>
@@ -327,11 +333,8 @@
   </div>
 </footer>
 
-<script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>
-
-</script>
 </body>
 </html>
