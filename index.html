@@ -1,189 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Silver Jewellery</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KiKA — Fine Silver Jewellery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<header>
-    <img src="logo.webp" alt="KIKA Logo">
 
-    <nav id="nav-menu">
-        <a href="#">Collections</a>
-        <a href="#">Rings</a>
-        <a href="#">Necklaces</a>
-        <a href="#">Bracelets</a>
-        <a href="#">About</a>
-    </nav>
+<div class="grain"></div>
 
-    <button>Shop Now</button>
-    <button id="mobile-menu-btn">☰</button>
-</header>
+<!-- Cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
 
-<!-- HERO -->
-<section class="hero">
-    <video autoplay muted loop playsinline>
-        <source src="Video 1.mp4" type="video/mp4">
-    </video>
 
-    <div class="hero-content">
-        <p>Fine Silver Jewellery • Crafted with Soul</p>
+     <!-- NAVIGATION -->
 
-        <h1 class="diamond-glow">
-            Born from <br> Silver & Starlight
-        </h1>
+<nav id="nav">
+  <a href="#" class="nav-logo" aria-label="Kika Jewels home">
+    <img src="logo.webp" alt="Kika Jewels">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#rings">Rings</a></li>
+    <li><a href="#necklaces">Necklaces</a></li>
+    <li><a href="#earrings">Earrings</a></li>
+    <li><a href="#bracelets">Bracelets</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-shop" onclick="location.href='#collections'">✦ Shop Now</div>
+</nav>
 
-        <button class="hero-btn">Explore Collection</button>
+
+    <!-- HERO -->
+<section class="hero" id="home">
+
+  
+  <video autoplay muted loop playsinline>
+    <source src="video 3.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-fade"></div>
+
+  
+  <div class="hero-sparkle" id="sparkles"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ &nbsp; Fine Silver Jewellery &nbsp; ✦ &nbsp; Crafted by Soul</p>
+    <h1 class="hero-title">Born from<br><em>Silver</em><br>&amp; Starlight</h1>
+    <p class="hero-sub">New Collection — 2026</p>
+    <a href="#collections" class="hero-cta">
+      <span class="hero-cta-text">Explore the Collection</span>
+      <span class="hero-cta-line"></span>
+    </a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+
+</section>
+
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Pure Silver <span>✦</span></span>
+    <span class="marquee-item">Handcrafted Luxury <span>✦</span></span>
+    <span class="marquee-item">925 Sterling <span>✦</span></span>
+    <span class="marquee-item">Timeless Elegance <span>✦</span></span>
+    <span class="marquee-item">Wear Your Story <span>✦</span></span>
+    <span class="marquee-item">Limited Editions <span>✦</span></span>
+    <span class="marquee-item">Pure Silver <span>✦</span></span>
+    <span class="marquee-item">Handcrafted Luxury <span>✦</span></span>
+    <span class="marquee-item">925 Sterling <span>✦</span></span>
+    <span class="marquee-item">Timeless Elegance <span>✦</span></span>
+    <span class="marquee-item">Wear Your Story <span>✦</span></span>
+    <span class="marquee-item">Limited Editions <span>✦</span></span>
+  </div>
+</div>
+
+
+     
+
+<section id="about">
+  <div class="intro">
+
+    <div class="reveal">
+      <span class="sec-eyebrow">Our Philosophy</span>
+      <h2 class="sec-title">Where <em>Art</em><br>meets Adornment</h2>
+      <p class="sec-body">Every piece in the KiKA universe is more than jewellery — it is a meditation in silver. Forged by skilled hands, shaped by vision, and worn by those who understand that true luxury is felt, not flaunted.</p>
+      <div class="intro-stats">
+        <div>
+          <div class="stat-n">7+</div>
+          <div class="stat-l">Years of Craft</div>
+        </div>
+        <div>
+          <div class="stat-n">925</div>
+          <div class="stat-l">Sterling Silver</div>
+        </div>
+        <div>
+          <div class="stat-n">∞</div>
+          <div class="stat-l">Stories Told</div>
+        </div>
+      </div>
     </div>
-</section>
 
-<!-- PHILOSOPHY -->
-<section class="scroll-left">
-    <h2>Where Art meets Adornment</h2>
-    <p>
-        Every piece is more than jewellery — it is a story crafted in silver.
-    </p>
-</section>
-
-<!-- 💎 COLLECTIONS -->
-<section class="collections scroll-left">
-    <h2>The Collections</h2>
-
-    <div class="bento-grid" id="collectionsGrid">
-
-        <!-- BIG IMAGE -->
-        <div class="box" data-type="image" data-cols="2" data-rows="2" data-animate="breathe">
-            <img src="Pic 1.jpg" alt="Rings">
-            <div class="overlay">Statement Rings</div>
-        </div>
-
-        <!-- VIDEO -->
-        <div class="box" data-type="video" data-cols="1" data-rows="2">
-            <video autoplay muted loop playsinline>
-                <source src="Video 2.mp4" type="video/mp4">
-            </video>
-            <div class="overlay">Luxury Motion</div>
-        </div>
-
-        <!-- TEXT -->
-        <div class="box box--text" data-type="text" data-cols="1" data-rows="1">
-            <p>We design every piece with love and intention.</p>
-        </div>
-
-        <!-- IMAGE -->
-        <div class="box" data-type="image" data-cols="1" data-rows="1">
-            <img src="Diamond.jpg" alt="Diamond">
-            <div class="overlay">Fine Craft</div>
-        </div>
-
-        <!-- WIDE IMAGE -->
-        <div class="box" data-type="image" data-cols="2" data-rows="1" data-animate="breathe">
-            <img src="Pic 2.jpg" alt="Bracelet">
-            <div class="overlay">Bracelets</div>
-        </div>
-
-        <!-- WIDE IMAGE -->
-        <div class="box" data-type="image" data-cols="2" data-rows="1" data-animate="breathe">
-            <img src="Pic 2.jpg" alt="Bracelet">
-            <div class="overlay">Bracelets</div>
-        </div>
-
+    <div class="reveal d2">
+      <div class="intro-visual">
+        
+        <video class="intro-vid" autoplay muted loop playsinline>
+          <source src="Video 1.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
+
+  </div>
 </section>
 
-<!-- PROMISE -->
-<section class="scroll-left promise">
-    <div class="promise-copy">
-        <h2>Jewellery that remembers who you are</h2>
-        <p>Discover timeless pieces designed to celebrate every moment, crafted with precision and passion.</p>
+     
+
+<section class="collections" id="collections">
+
+  <div class="col-header reveal">
+    <div>
+      <span class="sec-eyebrow">Curated for You</span>
+      <h2 class="sec-title">The Collections</h2>
     </div>
-    <button class="hero-btn">Discover More</button>
+    <a href="#" class="sec-link">View All Pieces</a>
+  </div>
+
+  <div class="horizontal-scroll-wrapper">
+    <div class="horizontal-scroll-pin">
+        <div class="col-grid" id="horizontalScrollTrack">
+        
+        <div class="col-card">
+          <video class="col-media" autoplay muted loop playsinline>
+            <source src="Celestial.mp4" type="video/mp4">
+          </video>
+          <div class="col-overlay">
+            <p class="col-tag">Signature Series</p>
+            <h3 class="col-name">The Celestial Collection</h3>
+            <p class="col-desc">Inspired by moonlight on water</p>
+          </div>
+        </div>
+
+        
+        <div class="col-card" id="rings">
+          <video class="col-media" autoplay muted loop playsinline>
+            <source src="Rings.mp4" type="video/mp4">
+          </video>
+          <div class="col-overlay">
+            <p class="col-tag">New Arrival</p>
+            <h3 class="col-name">Statement Rings</h3>
+            <p class="col-desc">Bold. Geometric. Eternal.</p>
+          </div>
+        </div>
+
+        <!-- NECKLACES -->
+        <div class="col-card" id="necklaces">
+          <video class="col-media" autoplay muted loop playsinline>
+            <source src="Silver Jewellery.mp4" type="video/mp4">
+          </video>
+          <div class="col-overlay">
+            <p class="col-tag">Bestseller</p>
+            <h3 class="col-name">Silver Necklaces</h3>
+            <p class="col-desc">Delicate chains, whispered luxury</p>
+          </div>
+        </div>
+
+        <!-- EARRINGS -->
+        <div class="col-card" id="earrings">
+          <video class="col-media" autoplay muted loop playsinline>
+            <source src="earrings.mp4" type="video/mp4">
+          </video>
+          <div class="col-overlay">
+            <p class="col-tag">Limited Edition</p>
+            <h3 class="col-name">Earrings Atelier</h3>
+            <p class="col-desc">For those who dare to shine</p>
+          </div>
+        </div>
+
+        <!-- BRACELETS -->
+        <div class="col-card" id="bracelets">
+          <video class="col-media" autoplay muted loop playsinline>
+            <source src="Bracelets.mp4" type="video/mp4">
+          </video>
+          <div class="col-overlay">
+            <p class="col-tag">Handcrafted</p>
+            <h3 class="col-name">Silver Bracelets</h3>
+            <p class="col-desc">Wrap yourself in silver dreams</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- WHY -->
-<section class="scroll-left why-section">
-    <h2>Why Choose Us</h2>
+
+<section class="feature">
+  <video autoplay muted loop playsinline>
+    <source src="product2.mp4" type="video/mp4">
+  </video>
+  <div class="feature-overlay"></div>
+  <div class="feature-content reveal">
+    <span class="sec-eyebrow">The KiKA Promise</span>
+    <h2 class="feature-title">Jewellery that<br><em>remembers</em><br>who you are</h2>
+    <p class="feature-body">Each piece is a mirror of the person who wears it. Sterling silver, shaped by artisan hands, finished with care that no machine can replicate.</p>
+    <a href="#collections" class="feature-cta">Discover More</a>
+  </div>
+</section>
+
+
+<section class="why">
+  <div class="why-inner">
+
+    <div class="reveal">
+      <span class="sec-eyebrow">The KiKA Standard</span>
+      <h2 class="sec-title">Why Choose Us</h2>
+    </div>
 
     <div class="why-grid">
-        <div class="why-card">
-            <h3>925 Pure Silver</h3>
-            <p>Certified quality that shines bright and lasts longer than trends.</p>
-        </div>
-
-        <div class="why-card">
-            <h3>Handcrafted</h3>
-            <p>Each piece is lovingly made by expert artisans with attention to every detail.</p>
-        </div>
-
-        <div class="why-card">
-            <h3>Customisable</h3>
-            <p>Personalise your jewellery for a look that reflects your true self.</p>
-        </div>
-
-        <div class="why-card">
-            <h3>Pan-India Shipping</h3>
-            <p>Fast, secure delivery across the country for every order.</p>
-        </div>
+      <div class="why-card reveal d1">
+        <div class="why-icon">◈</div>
+        <p class="why-title">925 Pure Silver</p>
+        <p class="why-text">Every piece hallmarked with a BIS certificate. Quality you can trust, beauty that endures.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon">✦</div>
+        <p class="why-title">Handcrafted</p>
+        <p class="why-text">Skilled artisans shape each ornament by hand — no two pieces are exactly alike.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-icon">◇</div>
+        <p class="why-title">Customisable</p>
+        <p class="why-text">Dream it. We make it. Fully bespoke jewellery tailored to your vision and style.</p>
+      </div>
+      <div class="why-card reveal d4">
+        <div class="why-icon">⬡</div>
+        <p class="why-title">Pan-India Delivery</p>
+        <p class="why-text">Free shipping on orders above ₹5000. Securely packed, delivered to your door.</p>
+      </div>
     </div>
+
+  </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="scroll-left testimonial-card">
-    <p>
-        "I wear KIKA not as an accessory — but as an identity."
-    </p>
+
+<section class="testi">
+  <span class="sec-eyebrow">What They Say</span>
+  <blockquote class="testi-quote" id="tq">
+    "I wear KiKA not as an accessory — but as an identity. The craftsmanship is unlike anything I've seen in Indian silver jewellery."
+  </blockquote>
+  <p class="testi-author" id="ta">— Priya S., Mumbai</p>
+  <div class="testi-dots">
+    <div class="t-dot on" onclick="setT(0)"></div>
+    <div class="t-dot"    onclick="setT(1)"></div>
+    <div class="t-dot"    onclick="setT(2)"></div>
+  </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="scroll-left newsletter">
+
+<section class="newsletter">
+  <h2 class="nl-title reveal">Join the Inner Circle</h2>
+  <p class="nl-sub reveal">First access to new drops, exclusive offers &amp; silver stories.</p>
+  <form class="nl-form reveal" onsubmit="return false;">
+    <input class="nl-input" type="email" placeholder="Your email address">
+    <button class="nl-btn" type="submit">Subscribe ✦</button>
+  </form>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
     <div>
-        <h2>Join the Inner Circle</h2>
-        <p>Get first access to new collections, exclusive offers, and jewelled stories.</p>
+      <div class="footer-logo">
+        <img src="logo.webp" alt="Kika Jewels">
+      </div>
+      <p class="footer-tag">Fine silver jewellery, handcrafted<br>with intention since 2018.<br><br>📍 India &nbsp;|&nbsp; 📞 +91 00000 00000</p>
     </div>
-
-    <div class="newsletter-fields">
-        <input type="email" placeholder="Enter your email">
-        <button class="hero-btn">Subscribe</button>
+    <div>
+      <p class="footer-col-title">Collections</p>
+      <ul class="footer-links">
+        <li><a href="#rings">Rings</a></li>
+        <li><a href="#necklaces">Necklaces</a></li>
+        <li><a href="#earrings">Earrings</a></li>
+        <li><a href="#bracelets">Bracelets</a></li>
+        <li><a href="#">Pendants</a></li>
+      </ul>
     </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-brand">
-        <h3>KIKA</h3>
-        <p>Luxury silver jewellery, crafted with soul and made to last across every celebration.</p>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <ul class="footer-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#">Craftsmanship</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
     </div>
-
-    <div class="footer-menu">
-        <div class="footer-column">
-            <p class="footer-title">Collections</p>
-            <a href="#">Rings</a>
-            <a href="#">Necklaces</a>
-            <a href="#">Bracelets</a>
-        </div>
-
-        <div class="footer-column">
-            <p class="footer-title">Company</p>
-            <a href="#">Our Story</a>
-            <a href="#">Careers</a>
-        </div>
-
-        <div class="footer-column">
-            <p class="footer-title">Support</p>
-            <a href="#">Contact</a>
-            <a href="#">Shipping</a>
-        </div>
+    <div>
+      <p class="footer-col-title">Support</p>
+      <ul class="footer-links">
+        <li><a href="#">Customisation</a></li>
+        <li><a href="#">Care Guide</a></li>
+        <li><a href="#">Shipping &amp; Returns</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="https://wa.me/910000000000" target="_blank">WhatsApp Us</a></li>
+      </ul>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 KiKA Jewellery. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="https://instagram.com/kika.jewel" target="_blank">Instagram</a>
+      <a href="https://wa.me/910000000000" target="_blank">WhatsApp</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </div>
 </footer>
 
-<!-- JS -->
+<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>
 
+</script>
 </body>
 </html>

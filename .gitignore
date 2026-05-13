@@ -1,0 +1,17 @@
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional
+node_modules/
+.env
